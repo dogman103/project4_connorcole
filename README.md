@@ -10,6 +10,11 @@
   - DATA MODELS ARE UNTESTED!!!!!!
   - no clue if API will actually call and return good data
 
+## Fixed issues
+  -
+
 ## Notes
-  - i am not adding more data models than just AGENTS. this has too many damn attributes for each thing. i dont want to do any more,
+  - the data model was made over the span of like an hour (and remains untested)
+  - i am not adding more data models than just AGENTS. this has too many damn attributes for each thing. i dont want to do any more (11:49 PM, 9/19/24)
+  -i am done for the night (11:50 PM, 9/19/24)
 
