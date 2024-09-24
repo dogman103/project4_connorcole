@@ -90,11 +90,14 @@ try:
 except ValidationError:
   print("Validation error! try again idk man")  
 
-gekko = agents['data'][0]
+gekko : Agent = agents['data'][0]
+gekkoUuid = gekko['uuid']
 
-gekkoList = gekko.items()
-for item in gekkoList:
-  print(item)
+agentNamesInOrder = []
+for agent in agents['data']:
+  agentNamesInOrder.append(agent['displayName'])
+
+
 
 #example by uuid
 #specificAgent = requests.get("https://valorant-api.com/v1/agents/e370fa57-4757-3604-3648-499e1f642d3f")
@@ -102,3 +105,37 @@ for item in gekkoList:
 #print(gdata)
 #gekko = Agent(**gdata)
 #print(gekko)
+
+agentNumber = 0
+
+while(True):
+  print("\nPress 1 to continue to agent select; press 0 to exit")
+  flag = input()
+  if (flag == '1'):
+    print("\nPlease select an agent to view:")
+    for agent in agentNamesInOrder:
+      print(agentNumber, agent)
+      agentNumber += 1
+    agentSelection=int(input("\nEnter the number of the agent to select: "))
+    agentName = agents['data'][agentSelection]['displayName']
+    print("what would you like to view?")
+    print(f"1. The description of {agentName}")
+    print(f"2. The abilities of {agentName}")
+    print(f"3. All the information about {agentName}")
+    characterInput = input("Select one of the options above and hit enter: ")
+    if (characterInput == "1"):
+      print('\n')
+      print(agents['data'][agentSelection].get("description"))
+    elif (characterInput == "2"):
+      print('\n')
+      agentAbilities = agents['data'][agentSelection].get('abilities')
+      for item in agentAbilities:
+        print(f"{item.get('displayName')} : {item.get('description')}")
+    elif (characterInput == "3"):
+      for item in agents['data'][agentSelection].items():
+        print(item)
+    else:
+      print("Input not recognized; try again!")
+    agentNumber = 0
+  else:
+    break
