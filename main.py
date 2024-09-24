@@ -33,11 +33,11 @@ class mediaList(BaseModel):
 class voiceLine(BaseModel):
   minDuration : float
   maxDuration : float
-  mediaList : mediaList
+  mediaList : list[mediaList]
 
-class data(BaseModel):
+class agentData(BaseModel):
   uuid : str
-  displayName : str 
+  displayName : str
   description : str 
   developerName: str
   characterTags : list[str]
@@ -75,10 +75,24 @@ class bundleData(BaseModel):
 
 class Agent(BaseModel):
   status : int
-  data : data
+  data : agentData
 
 class Bundle(BaseModel):
-  status : int
+
   data : bundleData
 
-        
+extracted_agents = {}
+#response = requests.get("https://valorant-api.com/v1/agents")
+#print(Agent.model_json_schema())
+#if response.status_code == 200:
+ # data = response.json()
+  #extracted_agents = Agent(**data)
+  
+  #print("data is valid", data)
+#if response.status_code == 400:
+ # print("400")
+
+specificAgent = requests.get("https://valorant-api.com/v1/agents/e370fa57-4757-3604-3648-499e1f642d3f")
+data = specificAgent.json()
+print(data)
+

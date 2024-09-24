@@ -8,6 +8,7 @@
 ## Issues
   - literally just making the data models and making sure they work
   - DATA MODELS ARE UNTESTED!!!!!!
+    - Data models do not work
   - no clue if API will actually call and return good data
 
 ## Fixed issues
