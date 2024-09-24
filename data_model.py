@@ -60,9 +60,26 @@ class data(BaseModel):
   abilities : list[abilities]
   voiceLine : voiceLine
 
+class bundleData(BaseModel):
+  uuid : str
+  displayName : str
+  displayNameSubtext : str
+  description : str
+  extraDescription : str
+  promoDescription : str 
+  useAdditionalContext : bool
+  displayIcon : str
+  displayIcon2 : str
+  logoIcon : str
+  verticalPromoImage : str
+  assetPath : str
 
 class Agent(BaseModel):
   status : int
   data : data
-      
+
+class Bundle(BaseModel):
+  status : int
+  data : bundleData
+
         
