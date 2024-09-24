@@ -1,6 +1,7 @@
 import requests
 from datetime import datetime
 from pydantic import BaseModel, ValidationError
+import json
 
 class role(BaseModel):
   uuid : str
@@ -40,7 +41,7 @@ class agentData(BaseModel):
   displayName : str
   description : str 
   developerName: str
-  characterTags : list[str]
+  characterTags : list[str] | None
   displayIcon:  str
   displayIconSmall : str
   bustPortrait : str
@@ -55,9 +56,9 @@ class agentData(BaseModel):
   isAvailableForTest : bool
   isBaseContent : bool
   role : role
-  recruitmentData : recruitmentData
+  recruitmentData : recruitmentData | None
   abilities : list[abilities]
-  voiceLine : voiceLine
+  voiceLine : voiceLine | None
 
 class bundleData(BaseModel):
   uuid : str
@@ -74,25 +75,30 @@ class bundleData(BaseModel):
   assetPath : str
 
 class Agent(BaseModel):
-  status : int
   data : agentData
 
 class Bundle(BaseModel):
 
   data : bundleData
 
-extracted_agents = {}
-#response = requests.get("https://valorant-api.com/v1/agents")
-#print(Agent.model_json_schema())
-#if response.status_code == 200:
- # data = response.json()
-  #extracted_agents = Agent(**data)
-  
-  #print("data is valid", data)
-#if response.status_code == 400:
- # print("400")
+agents = {}
+response = requests.get("https://valorant-api.com/v1/agents")
+try:
+  if response.status_code == 200:
+    agents = response.json()
+    print("data is valid")
+except ValidationError:
+  print("Validation error! try again idk man")  
 
-specificAgent = requests.get("https://valorant-api.com/v1/agents/e370fa57-4757-3604-3648-499e1f642d3f")
-data = specificAgent.json()
-print(data)
+gekko = agents['data'][0]
 
+gekkoList = gekko.items()
+for item in gekkoList:
+  print(item)
+
+#example by uuid
+#specificAgent = requests.get("https://valorant-api.com/v1/agents/e370fa57-4757-3604-3648-499e1f642d3f")
+#gdata = specificAgent.json()
+#print(gdata)
+#gekko = Agent(**gdata)
+#print(gekko)
