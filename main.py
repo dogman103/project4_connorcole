@@ -5,7 +5,7 @@ import json
 from data_model import Agent, Bundle
 
 
-agents = {}
+
 response = requests.get("https://valorant-api.com/v1/agents")
 try:
   if response.status_code == 200:
