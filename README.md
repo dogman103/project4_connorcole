@@ -15,6 +15,6 @@
   - Need to get bundle info...
 
 ## Notes
-  - after blood, sweat, and tears, i figured it out. fucking nested dictionaries. that's why it wouldn't work- it was already a dictionary of dictionaries. (2:43 PM, 9/24/24)
+  - after blood, sweat, and tears, i figured it out. [blank]ing nested dictionaries. that's why it wouldn't work- it was already a dictionary of dictionaries. (2:43 PM, 9/24/24)
   - API calls all work, data is good and is always validated, no issues currently. just need to implement rest of program (1:25 PM, 9/25/2024)
 
